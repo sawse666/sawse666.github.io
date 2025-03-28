@@ -20,57 +20,59 @@
     }
 
     .container {
-      width: 100%;
+      width: 90%;
       max-width: 900px;
       margin: 0 auto;
       padding: 20px;
-      text-align: center;
     }
 
-    /* 頭部樣式 */
-    header {
-      margin-bottom: 30px;
+    /* 導覽列樣式 */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+      background-color: #1E88E5;
+      padding: 15px;
+      border-radius: 8px;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      color: #1E88E5;
-      font-weight: bold;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-      margin-bottom: 10px;
+    nav a {
+      color: #FFF;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 10px;
+      transition: background-color 0.3s;
+      border-radius: 4px;
     }
 
-    /* 個人檔案卡片樣式 */
-    .profile {
+    nav a:hover {
+      background-color: #1565C0;
+    }
+
+    /* 頁面區塊樣式 */
+    .page {
+      display: none;
       background-color: #FFFFFF;
       padding: 30px;
       margin-top: 20px;
       border-radius: 16px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
     }
 
-    .profile:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+    .active {
+      display: block;
     }
 
-    .profile-img {
-      border-radius: 50%;
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border: 4px solid #1E88E5;
-      transition: transform 0.3s ease;
-    }
-
-    .profile-img:hover {
-      transform: scale(1.05);
+    h1 {
+      font-size: 2.5rem;
+      color: #1E88E5;
+      margin-bottom: 20px;
     }
 
     h2 {
       color: #1E88E5;
-      margin-top: 20px;
+      margin-bottom: 15px;
       font-size: 1.8rem;
     }
 
@@ -80,100 +82,33 @@
       margin-bottom: 15px;
     }
 
-    /* 按鈕樣式 */
-    button {
-      width: 100%;
-      max-width: 240px;
-      padding: 12px;
-      background-color: #1E88E5;
-      color: white;
-      border: none;
-      border-radius: 30px;
+    /* 表單樣式 */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input, textarea, button {
+      padding: 10px;
       font-size: 1rem;
+      border: 1px solid #CCC;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #1E88E5;
+      color: #FFF;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      margin-top: 15px;
-      box-shadow: 0 4px 12px rgba(30, 136, 229, 0.3);
+      transition: background-color 0.3s ease;
     }
 
     button:hover {
       background-color: #1565C0;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 18px rgba(21, 101, 192, 0.4);
     }
 
-    /* 更多資訊區塊 */
-    #moreInfo {
-      display: none;
-      background-color: #E3F2FD;
-      padding: 20px;
-      margin-top: 20px;
-      border-radius: 12px;
-      border: 1px solid #BBDEFB;
-      box-shadow: 0 4px 12px rgba(187, 222, 251, 0.5);
-      text-align: left;
-      transition: opacity 0.3s ease;
-    }
-
-    /* 頁尾樣式 */
-    footer {
-      margin-top: 30px;
-      padding-top: 20px;
-      font-size: 0.9rem;
-      color: #777;
-      border-top: 1px solid #E0E0E0;
-    }
-
-    footer a {
-      color: #1E88E5;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    footer a:hover {
-      color: #1565C0;
-      text-decoration: underline;
-    }
-
-    /* 響應式設計 (平板 & 電腦) */
-    @media (min-width: 768px) {
-      .profile-img {
-        width: 150px;
-        height: 150px;
-      }
-
-      h1 {
-        font-size: 3rem;
-      }
-
-      h2 {
-        font-size: 2rem;
-      }
-
-      p {
-        font-size: 1.2rem;
-      }
-
-      button {
-        font-size: 1.1rem;
-      }
-    }
-
-    /* 響應式設計 (手機) */
+    /* 響應式設計 */
     @media (max-width: 767px) {
-      .container {
-        padding: 15px;
-      }
-
-      .profile {
-        padding: 20px;
-      }
-
-      .profile-img {
-        width: 100px;
-        height: 100px;
-      }
-
       h1 {
         font-size: 2rem;
       }
@@ -185,54 +120,75 @@
       p {
         font-size: 1rem;
       }
-
-      button {
-        width: 100%;
-        font-size: 1rem;
-        padding: 10px;
-      }
     }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <header>
+
+  <!-- 導覽列 -->
+  <nav>
+    <a href="#" onclick="showPage('home')">首頁</a>
+    <a href="#" onclick="showPage('about')">關於我</a>
+    <a href="#" onclick="showPage('portfolio')">作品集</a>
+    <a href="#" onclick="showPage('contact')">聯絡我</a>
+  </nav>
+
+  <!-- 首頁 -->
+  <div id="home" class="page active">
     <h1>李〇翔</h1>
-  </header>
+    <p>你好，我是李〇翔，一名熱愛學習的國中生！</p>
+    <p>我對哲學和物理學特別感興趣，也喜歡在課餘時間探索新技術和閱讀書籍。</p>
+  </div>
 
-  <section class="profile">
-    <img class="profile-img" src="https://via.placeholder.com/150" alt="個人照片">
-    
-    <p id="intro">你好，我是李〇翔，一名熱愛學習的國中生！</p>
-    <p>我很喜歡一些奇怪的東西，尤其對哲學和物理學感興趣。除了學校課業外，我也會自己學一些其他的東西</p>
-    <p>在空閒時間，我喜歡閱讀書籍和探索新技術，並且喜歡和同學分享我的學習成果。</p>
-    
-    <button id="moreInfoButton">更多資訊</button>
-    
-    <div id="moreInfo">
-      <p>這裡是更多的資訊內容，你可以根據需要補充內容。</p>
-    </div>
-  </section>
+  <!-- 關於我 -->
+  <div id="about" class="page">
+    <h1>關於我</h1>
+    <p>我是一名對學習充滿熱情的學生，特別熱愛物理和哲學。</p>
+    <p>我相信學習是持續不斷的旅程，並希望將我的學習成果與大家分享。</p>
+  </div>
 
-  <footer>
-    <p>聯絡我: <a href="mailto:105031@smail.ilc.edu.tw">105031@smail.ilc.edu.tw</a></p>
-  </footer>
+  <!-- 作品集 -->
+  <div id="portfolio" class="page">
+    <h1>作品集</h1>
+    <h2>專案 1</h2>
+    <p>這是我在學習過程中完成的一個專案，內容是...</p>
+
+    <h2>專案 2</h2>
+    <p>這是另一個我感到自豪的專案，內容是...</p>
+  </div>
+
+  <!-- 聯絡我 -->
+  <div id="contact" class="page">
+    <h1>聯絡我</h1>
+    <form onsubmit="alert('感謝你的留言！'); return false;">
+      <input type="text" name="name" placeholder="你的名字" required>
+      <input type="email" name="email" placeholder="你的電子郵件" required>
+      <textarea name="message" placeholder="你的訊息" rows="5" required></textarea>
+      <button type="submit">提交</button>
+    </form>
+  </div>
+
 </div>
 
 <script>
-  document.getElementById('moreInfoButton').addEventListener('click', function() {
-    const moreInfoDiv = document.getElementById('moreInfo');
-    if (moreInfoDiv.style.display === 'none' || moreInfoDiv.style.display === '') {
-      moreInfoDiv.style.display = 'block';
-      moreInfoDiv.style.opacity = '0';
-      setTimeout(() => moreInfoDiv.style.opacity = '1', 10);
-    } else {
-      moreInfoDiv.style.opacity = '0';
-      setTimeout(() => moreInfoDiv.style.display = 'none', 300);
+  // 顯示對應的頁面
+  function showPage(pageId) {
+    // 隱藏所有頁面
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => {
+      page.classList.remove('active');
+    });
+
+    // 顯示目標頁面
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) {
+      targetPage.classList.add('active');
     }
-  });
+  }
 </script>
 
 </body>
 </html>
+
