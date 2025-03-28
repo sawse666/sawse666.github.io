@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>李〇翔</title>
   <style>
+    /* 全局樣式 */
     * {
       margin: 0;
       padding: 0;
@@ -13,106 +14,225 @@
 
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #E3F2FD;
+      background-color: #F4F7FA;
       color: #333;
+      line-height: 1.6;
     }
 
     .container {
-      width: 90%;
+      width: 100%;
+      max-width: 900px;
       margin: 0 auto;
+      padding: 20px;
       text-align: center;
     }
 
+    /* 頭部樣式 */
     header {
-      margin-top: 50px;
+      margin-bottom: 30px;
     }
 
     h1 {
-      font-size: 2.5em;
-      color: #1976D2;
+      font-size: 2.5rem;
+      color: #1E88E5;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 10px;
     }
 
+    /* 個人檔案卡片樣式 */
     .profile {
-      background-color: #FFF;
-      padding: 20px;
-      margin-top: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background-color: #FFFFFF;
+      padding: 30px;
+      margin-top: 20px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .profile:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
     }
 
     .profile-img {
       border-radius: 50%;
-      width: 150px;
-      height: 150px;
-      display: block;
-      margin: 0 auto;
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border: 4px solid #1E88E5;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
     }
 
     h2 {
-      color: #0288D1;
+      color: #1E88E5;
       margin-top: 20px;
+      font-size: 1.8rem;
     }
 
     p {
-      font-size: 1.1em;
-      line-height: 1.6;
+      font-size: 1.1rem;
+      color: #555;
       margin-bottom: 15px;
     }
 
+    /* 按鈕樣式 */
     button {
-      width: 180px;
+      width: 100%;
+      max-width: 240px;
       padding: 12px;
-      background-color: #0288D1;
+      background-color: #1E88E5;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 30px;
+      font-size: 1rem;
       cursor: pointer;
-      margin-top: 20px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-top: 15px;
+      box-shadow: 0 4px 12px rgba(30, 136, 229, 0.3);
     }
 
     button:hover {
-      background-color: #0277BD;
+      background-color: #1565C0;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(21, 101, 192, 0.4);
     }
 
+    /* 更多資訊區塊 */
+    #moreInfo {
+      display: none;
+      background-color: #E3F2FD;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 12px;
+      border: 1px solid #BBDEFB;
+      box-shadow: 0 4px 12px rgba(187, 222, 251, 0.5);
+      text-align: left;
+      transition: opacity 0.3s ease;
+    }
+
+    /* 頁尾樣式 */
     footer {
-      margin-top: 40px;
+      margin-top: 30px;
+      padding-top: 20px;
+      font-size: 0.9rem;
+      color: #777;
+      border-top: 1px solid #E0E0E0;
     }
 
     footer a {
-      color: #0288D1;
+      color: #1E88E5;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
 
     footer a:hover {
+      color: #1565C0;
       text-decoration: underline;
+    }
+
+    /* 響應式設計 (平板 & 電腦) */
+    @media (min-width: 768px) {
+      .profile-img {
+        width: 150px;
+        height: 150px;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+      }
+
+      button {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* 響應式設計 (手機) */
+    @media (max-width: 767px) {
+      .container {
+        padding: 15px;
+      }
+
+      .profile {
+        padding: 20px;
+      }
+
+      .profile-img {
+        width: 100px;
+        height: 100px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      button {
+        width: 100%;
+        font-size: 1rem;
+        padding: 10px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>李〇翔</h1>
-    </header>
-    <section class="profile">
-      <img src="https://via.placeholder.com/150https://drive.google.com/file/d/1s0c5q0E7IN7dhkIDU48qrq7V1Yq4Nm93/view?usp=drive_link</h2>
-      <p id="intro">你好，我是李〇翔，一名熱愛學習的國中生！</p>
-       <p>我很喜歡一些奇怪的東西，尤其對哲學和物理學感興趣。除了學校課業外，我也會自己學一些其他的東西</p>
-        <p>在空閒時間，我喜歡閱讀書籍和探索新技術，並且喜歡和同學分享我的學習成果。</p>
-    </section>
-    <footer>
-      <p>聯絡我: <a href="mailto:105031@smail.ilc.edu.tw">105031@smail.ilc.edu.tw</a></p>
-    </footer>
-  </div>
 
-  <script>
-    document.getElementById('moreInfoButton').addEventListener('click', function() {
-      const moreInfoDiv = document.getElementById('moreInfo');
-      if (moreInfoDiv.style.display === 'none' || moreInfoDiv.style.display === '') {
-        moreInfoDiv.style.display = 'block';
-      } else {
-        moreInfoDiv.style.display = 'none';
-      }
-    });
-  </script>
+<div class="container">
+  <header>
+    <h1>李〇翔</h1>
+  </header>
+
+  <section class="profile">
+    <img class="profile-img" src="https://via.placeholder.com/150" alt="個人照片">
+    
+    <p id="intro">你好，我是李〇翔，一名熱愛學習的國中生！</p>
+    <p>我很喜歡一些奇怪的東西，尤其對哲學和物理學感興趣。除了學校課業外，我也會自己學一些其他的東西</p>
+    <p>在空閒時間，我喜歡閱讀書籍和探索新技術，並且喜歡和同學分享我的學習成果。</p>
+    
+    <button id="moreInfoButton">更多資訊</button>
+    
+    <div id="moreInfo">
+      <p>這裡是更多的資訊內容，你可以根據需要補充內容。</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>聯絡我: <a href="mailto:105031@smail.ilc.edu.tw">105031@smail.ilc.edu.tw</a></p>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('moreInfoButton').addEventListener('click', function() {
+    const moreInfoDiv = document.getElementById('moreInfo');
+    if (moreInfoDiv.style.display === 'none' || moreInfoDiv.style.display === '') {
+      moreInfoDiv.style.display = 'block';
+      moreInfoDiv.style.opacity = '0';
+      setTimeout(() => moreInfoDiv.style.opacity = '1', 10);
+    } else {
+      moreInfoDiv.style.opacity = '0';
+      setTimeout(() => moreInfoDiv.style.display = 'none', 300);
+    }
+  });
+</script>
+
 </body>
 </html>
