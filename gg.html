@@ -1,62 +1,141 @@
-<table border="1" cellpadding="8" cellspacing="0">
-  <thead>
-    <tr>
-      <th>項目</th>
-      <th>學校會考衝刺班集中自習</th>
-      <th>監獄</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>目的</td>
-      <td>專心準備考試，提高成績</td>
-      <td>服刑並接受改造</td>
-    </tr>
-    <tr>
-      <td>自由度</td>
-      <td>不能隨意離開，但有固定休息時間</td>
-      <td>不能自由外出，但有固定放風時間</td>
-    </tr>
-    <tr>
-      <td>環境</td>
-      <td>教室內座位固定，氣氛安靜</td>
-      <td>牢房內床位固定，氣氛嚴肅</td>
-    </tr>
-    <tr>
-      <td>時間安排</td>
-      <td>固定學習與休息時間，按時用餐</td>
-      <td>固定作息，包括放風、勞動與用餐</td>
-    </tr>
-    <tr>
-      <td>管理方式</td>
-      <td>由老師維持秩序，確保學習進度</td>
-      <td>由獄警管理，確保監獄秩序</td>
-    </tr>
-    <tr>
-      <td>休息活動</td>
-      <td>可以聊天、吃點心、短暫活動</td>
-      <td>可以運動、讀書、與他人交流</td>
-    </tr>
-    <tr>
-      <td>心理狀態</td>
-      <td>有考試壓力，但期待考後解放</td>
-      <td>有服刑壓力，但期待刑滿出獄</td>
-    </tr>
-    <tr>
-      <td>結束條件</td>
-      <td>考試結束後即可自由安排時間</td>
-      <td>刑期結束後即可回歸社會</td>
-    </tr>
-    <tr>
-      <td>離開後影響</td>
-      <td>成績影響升學與未來發展</td>
-      <td>服刑紀錄可能影響未來生活</td>
-    </tr>
-    <tr>
-      <td>特殊情況</td>
-      <td>身體不適可請假休息</td>
-      <td>可申請保外就醫</td>
-    </tr>
-  </tbody>
-</table>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>集中自學 vs 監獄 比較表</title>
+  <style>
+    body {
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
 
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+
+    .table-container {
+      max-width: 1000px;
+      margin: auto;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+      background-color: #3498db;
+      color: white;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #f4faff;
+    }
+
+    tr:hover td {
+      background-color: #e9f5ff;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      th, td {
+        padding: 10px;
+        font-size: 14px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>集中自學 vs 監獄 比較表</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>集中自學</th>
+          <th>監獄</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>目的</td>
+          <td>專心準備考試，提高成績</td>
+          <td>服刑並接受改造</td>
+        </tr>
+        <tr>
+          <td>自由度</td>
+          <td>不能隨意離開，但有固定休息時間</td>
+          <td>不能自由外出，但有固定放風時間</td>
+        </tr>
+        <tr>
+          <td>環境</td>
+          <td>教室內座位固定，氣氛安靜</td>
+          <td>牢房內床位固定，氣氛嚴肅</td>
+        </tr>
+        <tr>
+          <td>時間安排</td>
+          <td>固定學習與休息時間，按時用餐</td>
+          <td>固定作息，包括放風、勞動與用餐</td>
+        </tr>
+        <tr>
+          <td>管理方式</td>
+          <td>由老師維持秩序，確保學習進度</td>
+          <td>由獄警管理，確保監獄秩序</td>
+        </tr>
+        <tr>
+          <td>休息活動</td>
+          <td>可以聊天、吃點心、短暫活動</td>
+          <td>可以運動、讀書、與他人交流</td>
+        </tr>
+        <tr>
+          <td>心理狀態</td>
+          <td>有考試壓力，但期待考後解放</td>
+          <td>有服刑壓力，但期待刑滿出獄</td>
+        </tr>
+        <tr>
+          <td>結束條件</td>
+          <td>考試結束後即可自由安排時間</td>
+          <td>刑期結束後即可回歸社會</td>
+        </tr>
+        <tr>
+          <td>離開後影響</td>
+          <td>成績影響升學與未來發展</td>
+          <td>服刑紀錄可能影響未來生活</td>
+        </tr>
+        <tr>
+          <td>特殊情況</td>
+          <td>身體不適可請假休息</td>
+          <td>可申請保外就醫</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
