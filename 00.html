@@ -2,6 +2,7 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>00</title>
     <style>
         body {
@@ -12,26 +13,44 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            padding: 20px;
         }
 
         .card {
             background-color: #fff3cd;
             border: 2px solid #ffcc00;
             border-radius: 15px;
-            width: 400px;
-            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            padding: 30px 20px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+
+            /* 初始進場動畫 */
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.2s;
+
+            /* 滑過動畫 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
         .card h1 {
             color: #d48806;
             margin-bottom: 10px;
+            font-size: 1.8em;
         }
 
         .card p {
             color: #6c5b2c;
-            font-size: 18px;
+            font-size: 1em;
             line-height: 1.6;
         }
 
@@ -45,16 +64,63 @@
             width: 80px;
             margin-bottom: 15px;
         }
+
+        /* 響應式字體調整 */
+        @media (max-width: 480px) {
+            .card {
+                padding: 20px 15px;
+            }
+
+            .card h1 {
+                font-size: 1.5em;
+            }
+
+            .card p {
+                font-size: 0.95em;
+            }
+        }
+
+        /* 進場動畫 */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 點擊動畫 */
+        @keyframes bounce {
+            0%   { transform: scale(1); }
+            30%  { transform: scale(1.1); }
+            50%  { transform: scale(0.95); }
+            70%  { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .bounce {
+            animation: bounce 0.5s ease;
+        }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>To 志亭老師</h1>
-        <p>親愛的老師<br>
-             謝謝你教我們三年<br>
-            雖然我一年級的教師節卡片還沒寫
-      </p>
+    <div class="card" id="card">
+        <h1>To 志亭老師 </h1>
+        <p>親愛的老師：<br>
+            謝謝您這三年來的教導與陪伴。<br>
+            雖然我一年級的教師節卡片還沒寫完，<br>
+            
+        </p>
         <div class="footer">— 瑞緒敬上</div>
     </div>
+
+    <script>
+        const card = document.getElementById('card');
+        card.addEventListener('click', () => {
+            card.classList.add('bounce');
+            setTimeout(() => {
+                card.classList.remove('bounce');
+            }, 500);
+        });
+    </script>
 </body>
 </html>
