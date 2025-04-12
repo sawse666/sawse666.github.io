@@ -1,200 +1,114 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>李〇翔</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sawse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* 全局樣式 */
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #F4F7FA;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    /* 導覽列樣式 */
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 20px;
-      background-color: #1E88E5;
-      padding: 15px;
-      border-radius: 8px;
-    }
-
-    nav a {
-      color: #FFF;
-      text-decoration: none;
-      font-size: 1rem;
-      padding: 10px;
-      transition: background-color 0.3s;
-      border-radius: 4px;
-    }
-
-    nav a:hover {
-      background-color: #1565C0;
-    }
-
-    /* 頁面區塊樣式 */
-    .page {
-      display: none;
-      background-color: #FFFFFF;
-      padding: 30px;
-      margin-top: 20px;
-      border-radius: 16px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    }
-
-    .active {
-      display: block;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      color: #1E88E5;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      color: #1E88E5;
-      margin-bottom: 15px;
-      font-size: 1.8rem;
-    }
-
-    p {
-      font-size: 1.1rem;
-      color: #555;
-      margin-bottom: 15px;
-    }
-
-    /* 表單樣式 */
-    form {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #e1bee7);
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      align-items: center;
+      animation: fadeIn 1s ease-in;
     }
 
-    input, textarea, button {
-      padding: 10px;
-      font-size: 1rem;
-      border: 1px solid #CCC;
-      border-radius: 4px;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
-    button {
-      background-color: #1E88E5;
-      color: #FFF;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+    header {
+      width: 100%;
+      background: #6a1b9a;
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      animation: slideDown 1s ease-in-out;
     }
 
-    button:hover {
-      background-color: #1565C0;
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
-    /* 響應式設計 */
-    @media (max-width: 767px) {
-      h1 {
-        font-size: 2rem;
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 20px;
+      max-width: 1200px;
+    }
+
+    .btn {
+      background-color: white;
+      color: #6a1b9a;
+      padding: 20px 30px;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 1.1em;
+      font-weight: bold;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      min-width: 150px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUp 0.6s ease forwards;
+    }
+
+    .btn:nth-child(1) { animation-delay: 0.3s; }
+    .btn:nth-child(2) { animation-delay: 0.5s; }
+    .btn:nth-child(3) { animation-delay: 0.7s; }
+    .btn:nth-child(4) { animation-delay: 0.9s; }
+    .btn:nth-child(5) { animation-delay: 1.1s; }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
+    }
 
-      h2 {
-        font-size: 1.5rem;
-      }
+    .btn:hover {
+      background-color: #6a1b9a;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+    }
 
-      p {
-        font-size: 1rem;
+    @media (max-width: 600px) {
+      .btn {
+        width: 90%;
+        font-size: 1.3em;
       }
     }
   </style>
 </head>
 <body>
-<marquee>一人一元救救〇〇</marquee>
-<div class="container">
+  <header>
+    sawse
+  </header>
 
-  <!-- 導覽列 -->
-  <nav>
-    <a href="#" onclick="showPage('home')">首頁</a>
-    <a href="#" onclick="showPage('about')">關於我</a>
-    <a href="#" onclick="showPage('learning')">學習歷程</a>
-    <a href="#" onclick="showPage('contact')">聯絡我</a>
-  </nav>
-
-  <!-- 首頁 -->
-  <div id="home" class="page active">
-    <h1>李〇翔</h1>
-    <p>你好，我是李〇翔，一名熱愛學習的國中生！</p>
-    <p>我對哲學和物理學特別感興趣，也喜歡在課餘時間探索新技術和閱讀書籍。</p>
+  <div class="button-container">
+    <a href="00.html" class="btn">畢業卡片</a>
+    <a href="gg.html" class="btn">集中自習監獄比較表</a>
+    <a href="game.html" class="btn">遊戲（還沒做好）</a>
+    <a href="cat87.html" class="btn">李〇翔的個人網站</a>
+    <a href="page5.html" class="btn">無</a>
   </div>
-
-  <!-- 關於我 -->
-  <div id="about" class="page">
-    <h1>關於我</h1>
-    <p>我是一名對學習充滿熱情的學生，特別熱愛物理和哲學。</p>
-    <p>我相信學習是持續不斷的旅程，並希望將我的學習成果與大家分享。</p>
-  </div>
-
-  <!-- 學習歷程 -->
-  <div id="learning" class="page">
-    <h1>學習歷程</h1>
-    
-    <h2>國中一年級</h2>
-    <p>無</p>
-    
-    <h2>國中二年級</h2>
-    <p>無</p>
-    
-    <h2>國中三年級</h2>
-    <p>無</p>
-
-    <h2>其他</h2>
-    <p>無</p>
-  </div>
-
-  <!-- 聯絡我 -->
-  <div id="contact" class="page">
-    <h1>聯絡我</h1>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSczRsELWqK-ONOIKEU9cO7PYNXGchVuTJgDmPcWNFeTw4onyA/viewform?embedded=true" width="100%" 
-            height="600" 
-            frameborder="0" 
-            marginheight="0" 
-            marginwidth="0">載入中…</iframe>
-  
-  </div>
-
-</div>
-
-<script>
-  // 顯示對應的頁面
-  function showPage(pageId) {
-    // 隱藏所有頁面
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(page => {
-      page.classList.remove('active');
-    });
-
-    // 顯示目標頁面
-    const targetPage = document.getElementById(pageId);
-    if (targetPage) {
-      targetPage.classList.add('active');
-    }
-  }
-</script>
-
 </body>
 </html>
