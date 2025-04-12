@@ -2,88 +2,58 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Apple 免費體驗</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>免費體驗申請</title>
   <style>
-    /* 全局樣式重設 */
+    /* 基本設置 */
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
-      color: #333;
-      background-color: #fff;
-      line-height: 1.5;
+      background-color: #f4f4f4;
     }
-
-    /* 假導航列 */
     header {
-      padding: 20px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #e5e5e5;
+      background-color: #333;
+      color: #fff;
+      padding: 10px 0;
     }
-    .logo {
-      font-size: 1.6em;
-      font-weight: bold;
-      color: #0071e3;
-      letter-spacing: 1px;
-    }
-
     .nav {
-      display: flex;
-      gap: 20px;
+      text-align: center;
+      margin: 0;
     }
     .nav a {
+      color: #fff;
       text-decoration: none;
-      color: #333;
-      font-size: 0.9em;
-      padding: 5px 10px;
-      transition: color 0.2s;
+      padding: 10px 20px;
+      display: inline-block;
     }
     .nav a:hover {
-      color: #0071e3;
+      background-color: #0071e3;
     }
 
-    /* Hero 區：大圖背景、透明覆層與置中內容 */
+    /* Hero 區 */
     .hero {
+      background-color: #005bb5;
+      color: white;
       text-align: center;
-      padding: 120px 20px;
-      background: url('https://via.placeholder.com/1500x600') no-repeat center center/cover;
-      position: relative;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(255,255,255,0.8);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
+      padding: 80px 0;
     }
     .hero h1 {
-      font-size: 3em;
       margin: 0;
-      color: #111;
+      font-size: 2.5em;
     }
     .hero p {
       font-size: 1.2em;
-      margin: 20px 0;
-      color: #555;
+      margin-top: 10px;
     }
     .cta-button {
-      display: inline-block;
-      padding: 15px 30px;
       background-color: #0071e3;
-      color: #fff;
+      color: white;
+      padding: 15px 30px;
       text-decoration: none;
-      font-size: 1em;
+      font-size: 1.2em;
       border-radius: 5px;
-      transition: background-color 0.3s;
+      margin-top: 20px;
     }
     .cta-button:hover {
       background-color: #005bb5;
@@ -94,6 +64,8 @@
       max-width: 500px;
       margin: 60px auto;
       padding: 40px;
+      background-color: #fff;
+      border-radius: 8px;
       border-top: 1px solid #e5e5e5;
       border-bottom: 1px solid #e5e5e5;
     }
@@ -157,37 +129,42 @@
 
     /* 響應式設計 */
     @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .nav {
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 20px;
-      }
       .hero h1 {
-        font-size: 2.5em;
+        font-size: 2em;
       }
       .hero p {
         font-size: 1em;
       }
       .form-section {
-        width: 90%;
         padding: 30px;
+        margin: 30px;
+      }
+      .form-section h2 {
+        font-size: 1.5em;
       }
     }
 
     @media (max-width: 480px) {
       .hero h1 {
-        font-size: 2em;
+        font-size: 1.5em;
       }
       .hero p {
-        font-size: 0.9em;
+        font-size: 1em;
+        padding: 0 10px;
       }
       .cta-button {
-        padding: 12px 24px;
-        font-size: 0.9em;
+        padding: 10px 20px;
+        font-size: 1em;
+      }
+      .form-section {
+        margin: 20px;
+        padding: 20px;
+      }
+      .form-section h2 {
+        font-size: 1.3em;
+      }
+      .form-section input[type="submit"] {
+        padding: 12px;
       }
     }
   </style>
@@ -202,7 +179,6 @@
 <body>
   <!-- 假導航列 -->
   <header>
-    <div class="logo">Apple</div>
     <div class="nav">
       <a href="#">Mac</a>
       <a href="#">iPad</a>
@@ -210,6 +186,10 @@
       <a href="#">Watch</a>
       <a href="#">TV</a>
       <a href="#">Music</a>
+    </div>
+    <div class="nav">
+      <a href="#">支援</a>
+      <a href="#">購物車</a>
     </div>
   </header>
 
