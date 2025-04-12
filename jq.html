@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apple 免費體驗</title>
+  <style>
+    /* 基本重置與字體設定 */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: #333;
+      background-color: #fff;
+      line-height: 1.5;
+    }
+    /* 假導航列 */
+    header {
+      padding: 15px 30px;
+      border-bottom: 1px solid #e5e5e5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav {
+      display: flex;
+      gap: 20px;
+    }
+    .nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 0.9em;
+      padding: 5px 10px;
+      transition: color 0.2s;
+    }
+    .nav a:hover {
+      color: #0071e3;
+    }
+    /* Hero 區：大圖背景、透明覆層與置中內容 */
+    .hero {
+      text-align: center;
+      padding: 120px 20px;
+      background: url('https://via.placeholder.com/1500x600') no-repeat center center/cover;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255,255,255,0.8);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: 3em;
+      margin: 0;
+      color: #111;
+    }
+    .hero p {
+      font-size: 1.2em;
+      margin: 20px 0;
+      color: #555;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #0071e3;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1em;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .cta-button:hover {
+      background-color: #005bb5;
+    }
+    /* 表單區：簡約且置中 */
+    .form-section {
+      max-width: 500px;
+      margin: 60px auto;
+      padding: 40px;
+      border-top: 1px solid #e5e5e5;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .form-section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+      color: #0071e3;
+    }
+    .form-section label {
+      display: block;
+      margin: 15px 0 5px;
+      font-size: 0.95em;
+    }
+    .form-section input[type="text"],
+    .form-section input[type="email"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+    .form-section input[type="submit"] {
+      width: 100%;
+      padding: 15px;
+      margin-top: 20px;
+      background-color: #0071e3;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .form-section input[type="submit"]:hover {
+      background-color: #005bb5;
+    }
+    /* 警告訊息：初始隱藏，點擊提交後顯示 */
+    .warning {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff4f4;
+      border: 1px solid #ffcccc;
+      border-radius: 5px;
+      color: #d8000c;
+      font-weight: bold;
+      display: none;
+      text-align: center;
+    }
+    /* Footer 區 */
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #e5e5e5;
+      font-size: 0.85em;
+      color: #777;
+    }
+  </style>
+  <script>
+    // 使用者提交表單後顯示警告訊息
+    function showWarning(event) {
+      event.preventDefault();
+      document.getElementById("warning").style.display = "block";
+    }
+  </script>
+</head>
+<body>
+  <!-- 假導航列 -->
+  <header>
+    <div class="nav">
+      <a href="#">Mac</a>
+      <a href="#">iPad</a>
+      <a href="#">iPhone</a>
+      <a href="#">Watch</a>
+      <a href="#">TV</a>
+      <a href="#">Music</a>
+    </div>
+    <div class="nav">
+      <a href="#">支援</a>
+      <a href="#">購物車</a>
+    </div>
+  </header>
+
+  <!-- Hero 區 -->
+  <div class="hero">
+    <div class="hero-content">
+      <h1>免費體驗</h1>
+      <p>立即申請，獲得專屬免費體驗機會，體驗未來科技。</p>
+      <a class="cta-button" href="#form-section">立即申請</a>
+    </div>
+  </div>
+
+  <!-- 表單區 -->
+  <div class="form-section" id="form-section">
+    <h2>登記您的資訊</h2>
+    <form onsubmit="showWarning(event)">
+      <label for="name">姓名</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="email">電子郵件</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="address">通訊地址</label>
+      <input type="text" id="address" name="address" required>
+      
+      <input type="submit" value="提交申請">
+    </form>
+  </div>
+
+  <!-- 警告訊息 -->
+  <div id="warning" class="warning">
+    警告：這是一個偽裝的詐騙網站示例，請勿在真實環境中提交任何個人資料！
+  </div>
+
+  <!-- Footer 區 -->
+  <footer>
+    © 2025 版權所有
+  </footer>
+</body>
+</html>
