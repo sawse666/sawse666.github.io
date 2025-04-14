@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>901班畢業卡片</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="description" content="901班畢業卡片網頁，提供畢業卡片的多重連結頁面。">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #e1bee7);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 1s ease-in;
+      padding: 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    header {
+      width: 100%;
+      background: #6a1b9a;
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      animation: slideDown 1s ease-in-out;
+      margin-bottom: 30px;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1200px;
+    }
+
+    .btn {
+      background-color: white;
+      color: #6a1b9a;
+      padding: 20px 30px;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 1.1em;
+      font-weight: bold;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      min-width: 150px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUp 0.6s ease forwards;
+    }
+
+    /* 設定依序延遲效果，每個按鈕間隔 0.2s */
+    .btn:nth-child(n) {
+      animation-delay: calc(0.2s * (var(--i)));
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .btn:hover {
+      background-color: #6a1b9a;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 600px) {
+      .btn {
+        width: 90%;
+        font-size: 1.3em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    901班畢業卡片
+  </header>
+
+  <div class="button-container">
+    <!-- 使用 inline style 來定義每個按鈕的延遲 -->
+    <a href="01.html" class="btn" style="--i: 1;">01</a>
+    <a href="02.html" class="btn" style="--i: 2;">02</a>
+    <a href="03.html" class="btn" style="--i: 3;">03</a>
+    <a href="04.html" class="btn" style="--i: 4;">04</a>
+    <a href="05.html" class="btn" style="--i: 5;">05</a>
+    <a href="06.html" class="btn" style="--i: 6;">06</a>
+    <a href="07.html" class="btn" style="--i: 7;">07</a>
+    <a href="08.html" class="btn" style="--i: 8;">08</a>
+    <a href="09.html" class="btn" style="--i: 9;">09</a>
+    <a href="10.html" class="btn" style="--i: 10;">10</a>
+    <a href="11.html" class="btn" style="--i: 11;">11</a>
+    <a href="12.html" class="btn" style="--i: 12;">12</a>
+    <a href="13.html" class="btn" style="--i: 13;">13</a>
+    <a href="14.html" class="btn" style="--i: 14;">14</a>
+    <a href="15.html" class="btn" style="--i: 15;">15</a>
+    <a href="16.html" class="btn" style="--i: 16;">16</a>
+    <a href="17.html" class="btn" style="--i: 17;">17</a>
+    <a href="18.html" class="btn" style="--i: 18;">18</a>
+    <a href="19.html" class="btn" style="--i: 19;">19</a>
+    <a href="20.html" class="btn" style="--i: 20;">20</a>
+    <a href="21.html" class="btn" style="--i: 21;">21</a>
+    <a href="22.html" class="btn" style="--i: 22;">22</a>
+    <a href="23.html" class="btn" style="--i: 23;">23</a>
+  </div>
+</body>
+</html>
