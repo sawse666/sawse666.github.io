@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>幻影星域</title>
+  <title>幻影星域 - Roguelike</title>
   <style>
     /* 基本重置 */
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,7 +43,7 @@
       padding: 15px;
     }
     
-    .player-info, .inventory, .game-actions {
+    .player-info, .game-actions {
       margin-bottom: 15px;
     }
     
@@ -60,6 +60,8 @@
       font-size: 16px;
       cursor: pointer;
       transition: background-color 0.2s;
+      background-color: #4CAF50;
+      color: white;
     }
     
     .game-actions button:hover {
@@ -99,40 +101,18 @@
       list-style: disc;
       margin-left: 20px;
     }
-    
-    /* 響應式設計：當螢幕寬度低於 600px 時 */
-    @media only screen and (max-width: 600px) {
-      .game-container {
-        width: 90%;
-      }
-      
-      .header h1 {
-        font-size: 20px;
-      }
-      
-      .content {
-        padding: 10px;
-      }
-      
-      .game-actions button {
-        font-size: 14px;
-        padding: 8px;
-      }
-      
-      .game-log {
-        font-size: 13px;
-      }
-      
-      .inventory h3 {
-        font-size: 14px;
-      }
+
+    .inventory ul li {
+      font-size: 14px;
+      margin-bottom: 5px;
     }
+
   </style>
 </head>
 <body>
   <div class="game-container">
     <div class="header">
-      <h1>幻影星域</h1>
+      <h1>幻影星域 - Roguelike</h1>
     </div>
     
     <div class="content">
@@ -143,15 +123,11 @@
         <p id="player-attack">攻擊力: 20</p>
         <p id="player-defense">防禦力: 10</p>
         <p id="player-level">等級: 1</p>
-        <p id="player-region">區域: 村莊</p>
       </div>
       
       <!-- 功能按鈕 -->
       <div class="game-actions">
-        <button onclick="startBattle()">開始戰鬥</button>
-        <button onclick="explore()">探索地圖</button>
-        <button onclick="talkToNPC()">與 NPC 對話</button>
-        <button onclick="changeRegion()">切換區域</button>
+        <button id="start-dungeon-btn" onclick="startDungeon()">開始地牢探險</button>
         <button onclick="saveGame()">儲存遊戲</button>
         <button onclick="loadGame()">讀取遊戲</button>
       </div>
@@ -176,31 +152,25 @@
       attack: 20,
       defense: 10,
       level: 1,
-      region: '村莊',
       inventory: [],
-      quest: {
-        main: 0,  // 0: 尚未接取, 1: 進行中, 2: 完成
-        side: 0
-      }
     };
-    
+
     const gameLog = document.getElementById('game-log');
     const playerHealthElem = document.getElementById('player-health');
     const playerAttackElem = document.getElementById('player-attack');
     const playerDefenseElem = document.getElementById('player-defense');
     const playerLevelElem = document.getElementById('player-level');
-    const playerRegionElem = document.getElementById('player-region');
     const inventoryList = document.getElementById('inventory-list');
-    
+    const startDungeonBtn = document.getElementById('start-dungeon-btn');
+
     // 更新玩家狀態
     function updatePlayerStats() {
       playerHealthElem.textContent = `生命值: ${player.health}`;
       playerAttackElem.textContent = `攻擊力: ${player.attack}`;
       playerDefenseElem.textContent = `防禦力: ${player.defense}`;
       playerLevelElem.textContent = `等級: ${player.level}`;
-      playerRegionElem.textContent = `區域: ${player.region}`;
     }
-    
+
     // 更新背包內容
     function updateInventory() {
       inventoryList.innerHTML = '';
@@ -210,83 +180,48 @@
         inventoryList.appendChild(li);
       });
     }
-    
-    // 戰鬥邏輯
-    function startBattle() {
+
+    // 開始地牢探險
+    function startDungeon() {
+      gameLog.textContent = '你進入了一個隨機生成的地牢...';
+
+      // 隨機生成敵人
       let enemyHealth = 50 + player.level * 10;
       let enemyAttack = 15 + player.level * 2;
-      gameLog.textContent = `敵人現身！(血量: ${enemyHealth}, 攻擊: ${enemyAttack})`;
-      
+      gameLog.textContent += `\n遇到敵人！(血量: ${enemyHealth}, 攻擊: ${enemyAttack})`;
+
       // 玩家攻擊
       let playerDamage = Math.floor(Math.max(0, player.attack - (Math.random() * 5)));
       enemyHealth -= playerDamage;
       gameLog.textContent += `\n你對敵人造成了 ${playerDamage} 點傷害！`;
-      
+
       // 敵人反擊
       let enemyDamage = Math.floor(Math.max(0, enemyAttack - player.defense));
       player.health -= enemyDamage;
       gameLog.textContent += `\n敵人反擊，造成 ${enemyDamage} 點傷害！`;
-      
+
       // 戰鬥結果判斷
       if (player.health <= 0) {
         gameLog.textContent += `\n你被擊敗了！遊戲結束。`;
+        // 顯示重新開始選項
+        gameLog.textContent += `\n你可以重新開始遊戲。`;
+        player.health = 100;  // 重置玩家生命值
+        player.level = 1;     // 重置等級
+        player.attack = 20;   // 重置攻擊力
+        player.defense = 10;  // 重置防禦力
+        updatePlayerStats();
       } else if (enemyHealth <= 0) {
         gameLog.textContent += `\n你擊敗了敵人！獲得經驗與獎勳。`;
         player.level++;
         player.attack += 5;
         player.defense += 2;
-        // 若正執行主線任務則完成
-        if (player.quest.main === 1) {
-          gameLog.textContent += `\n【主線任務】完成！村莊安全，新區域已解鎖。`;
-          player.quest.main = 2;
-        }
+        player.health = Math.min(100, player.health + 20);  // 每次戰鬥後回血
+        gameLog.textContent += `\n你升級了！目前等級: ${player.level}`;
       }
-      
+
       updatePlayerStats();
     }
-    
-    // 探索：隨機獲得物品或任務道具
-    function explore() {
-      const discoveries = [
-        { name: '治療藥水', effect: 'restore_health', message: '你發現了一瓶治療藥水！' },
-        { name: '鋼劍', effect: 'increase_attack', message: '你發現了一把鋼劍！' },
-        { name: '古代卷軸', effect: 'quest_item', message: '你發現了一個古代卷軸，似乎與某個任務有關。' }
-      ];
-      const item = discoveries[Math.floor(Math.random() * discoveries.length)];
-      gameLog.textContent = item.message;
-      player.inventory.push(item);
-      updateInventory();
-    }
-    
-    // 與 NPC 對話與任務處理
-    function talkToNPC() {
-      if (player.region === '村莊') {
-        if (player.quest.main === 0) {
-          gameLog.textContent = "村長：村莊正受到怪物威脅，請幫我們解決外圍怪物。接下這個主線任務吧！";
-          player.quest.main = 1;
-        } else if (player.quest.side === 0) {
-          gameLog.textContent = "村民：除了主線危機，村外的森林深處有稀有藥草，能製作強效藥水。去尋找它吧！";
-          player.quest.side = 1;
-        } else {
-          gameLog.textContent = "村民：感謝你的幫助，村莊變得更加安全了。";
-        }
-      } else if (player.region === '森林') {
-        gameLog.textContent = "樹精：這片森林蘊藏著古老秘密，收集足夠的古代卷軸能解開謎題。";
-      } else if (player.region === '城堡') {
-        gameLog.textContent = "守衛：城堡正遭入侵，請幫忙抵禦敵人，保護王國！";
-      }
-    }
-    
-    // 切換區域：按鈕循環切換區域
-    function changeRegion() {
-      const regions = ['村莊', '森林', '城堡'];
-      let idx = regions.indexOf(player.region);
-      let nextIdx = (idx + 1) % regions.length;
-      player.region = regions[nextIdx];
-      gameLog.textContent = `你來到了 ${player.region}。`;
-      updatePlayerStats();
-    }
-    
+
     // 儲存遊戲進度
     function saveGame() {
       try {
@@ -296,7 +231,7 @@
         gameLog.textContent += '\n儲存失敗：' + err.message;
       }
     }
-    
+
     // 讀取遊戲進度
     function loadGame() {
       try {
@@ -313,7 +248,7 @@
         gameLog.textContent += '\n讀取失敗：' + err.message;
       }
     }
-    
+
     // 初始化顯示
     updatePlayerStats();
     updateInventory();
