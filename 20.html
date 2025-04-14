@@ -2,122 +2,180 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"content="width=device-width, initial-scale=1.0">
-    <title>給志亭老師的數字卡片</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>給志亭老師的數位卡片</title>
     <style>
-        body{
-            font-family: 'Microsoft JhengHei',sans-serif;
-            background-color: #fff8e1;
-            display:flex;
-            justify-content:center;
-            align-items:center;
+        body {
+            font-family: 'Microsoft JhengHei', sans-serif;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
             margin: 0;
             padding: 20px;
+            overflow: hidden;
         }
 
-        .card{
-            background-color: #fff3cd;
-            border: 2pxsolid#ffcc00;
+        .card {
+            background-color: #ff69b4;
+            border: 2px solid #ff1493;
             border-radius: 15px;
             width: 100%;
             max-width: 400px;
             padding: 30px 20px;
-            text-align:center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            box-sizing:border-box;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
 
-            /* 初始進場動畫*/
+            /* 初始進場動畫 */
             opacity: 0;
             transform: translateY(30px);
-            animation:fadeInUp0.8sease forwards;
+            animation: fadeInUp 0.8s ease forwards;
             animation-delay: 0.2s;
 
-            /* 滑過動畫*/
-            transition:transform0.3sease,box-shadow0.3sease;
+            /* 滑過動畫 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .card:hover{
+        .card:hover {
             transform: scale(1.03);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
         }
 
-        .card h1{
-            color: #d48806;
+        .card h1 {
+            color: #fff;
             margin-bottom: 10px;
             font-size: 1.8em;
+            text-shadow: 1px 1px 2px #c2185b;
         }
 
-        .card p{
-            color: #6c5b2c;
+        .card p {
+            color: #fff;
             font-size: 1em;
             line-height: 1.6;
+            text-shadow: 1px 1px 1px #c2185b;
         }
 
-        .card.footer{
+        .card .footer {
             margin-top: 25px;
-            font-weight:bold;
-            color: #a67c00;
+            font-weight: bold;
+            color: #ffe6f0;
         }
 
-        .card img{
+        .card img {
             width: 80px;
             margin-bottom: 15px;
         }
 
-        /* 響應式字體調整*/
-        @media(max-width: 480px) {
-            .card{
+        @media (max-width: 480px) {
+            .card {
                 padding: 20px 15px;
             }
 
-            .card h1{
+            .card h1 {
                 font-size: 1.5em;
             }
 
-            .card p{
+            .card p {
                 font-size: 0.95em;
             }
         }
 
-        /* 進場動畫*/
-        @keyframesfadeInUp {
-            to{
+        @keyframes fadeInUp {
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        /* 點擊動畫*/
-        @keyframesbounce {
-            0%   {transform: scale(1); }
-            30%  {transform: scale(1.1); }
-            50%  {transform: scale(0.95); }
-            70%  {transform: scale(1.05); }
-            100%{transform: scale(1); }
+        @keyframes bounce {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.1); }
+            50% { transform: scale(0.95); }
+            70% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
-        .bounce{
-            animation:bounce0.5sease;
+        .bounce {
+            animation: bounce 0.5s ease;
+        }
+
+        /* 愛心動畫樣式 */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff1493;
+            transform: rotate(45deg);
+            animation: pop 1s ease-out forwards;
+            pointer-events: none;
+            z-index: 999;
+            box-shadow: 0 0 10px #ff69b4;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff1493;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -10px;
+            top: 0;
+        }
+
+        @keyframes pop {
+            0% {
+                opacity: 1;
+                transform: scale(1) rotate(45deg) translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(2) rotate(45deg) translateY(-100px);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="card"id="card">
+    <div class="card" id="card">
         <h1>To 志亭老師</h1>
-        <p>親愛的老師：<br>
-            
+        <p>
+         嗚嗚嗚嗚嗚嗚嗚嗚嗚嗚嗚嗚嗚<br>
+            嗚嗚嗚志亭大帥哥嗚嗚嗚嗚嗚<br>
+           嗚嗚教完我們三年因該很感動吧！<br>
+            嗚嗚嗚嗚嗚嗚嗚嗚嗚終於教完這些死屁孩們了
         </p>
-        <div class="footer">—怡婷敬上</div>
+        <div class="footer">— 怡婷敬上</div>
     </div>
 
     <script>
         const card = document.getElementById('card');
-        card.addEventListener('click', () => {
+
+        card.addEventListener('click', (e) => {
             card.classList.add('bounce');
             setTimeout(() => {
                 card.classList.remove('bounce');
             }, 500);
+
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = `${e.clientX - 10}px`;
+            heart.style.top = `${e.clientY - 10}px`;
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 1000);
         });
     </script>
 </body>
