@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"content="width=device-width, initial-scale=1.0">
+    <title>給志亭老師的數字卡片</title>
+    <style>
+        body{
+            font-family: 'Microsoft JhengHei',sans-serif;
+            background-color: #fff8e1;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .card{
+            background-color: #fff3cd;
+            border: 2pxsolid#ffcc00;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 400px;
+            padding: 30px 20px;
+            text-align:center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-sizing:border-box;
+
+            /* 初始進場動畫*/
+            opacity: 0;
+            transform: translateY(30px);
+            animation:fadeInUp0.8sease forwards;
+            animation-delay: 0.2s;
+
+            /* 滑過動畫*/
+            transition:transform0.3sease,box-shadow0.3sease;
+        }
+
+        .card:hover{
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h1{
+            color: #d48806;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+        }
+
+        .card p{
+            color: #6c5b2c;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        .card.footer{
+            margin-top: 25px;
+            font-weight:bold;
+            color: #a67c00;
+        }
+
+        .card img{
+            width: 80px;
+            margin-bottom: 15px;
+        }
+
+        /* 響應式字體調整*/
+        @media(max-width: 480px) {
+            .card{
+                padding: 20px 15px;
+            }
+
+            .card h1{
+                font-size: 1.5em;
+            }
+
+            .card p{
+                font-size: 0.95em;
+            }
+        }
+
+        /* 進場動畫*/
+        @keyframesfadeInUp {
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 點擊動畫*/
+        @keyframesbounce {
+            0%   {transform: scale(1); }
+            30%  {transform: scale(1.1); }
+            50%  {transform: scale(0.95); }
+            70%  {transform: scale(1.05); }
+            100%{transform: scale(1); }
+        }
+
+        .bounce{
+            animation:bounce0.5sease;
+        }
+    </style>
+</head>
+<body>
+    <div class="card"id="card">
+        <h1>To 志亭老師</h1>
+        <p>親愛的老師：<br>
+            
+        </p>
+        <div class="footer">—清鴻敬上</div>
+    </div>
+
+    <script>
+        const card = document.getElementById('card');
+        card.addEventListener('click', () => {
+            card.classList.add('bounce');
+            setTimeout(() => {
+                card.classList.remove('bounce');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
