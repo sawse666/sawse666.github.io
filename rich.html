@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rich Huang 的個人網站</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #0d0d0d;
+      color: #ffd700;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 1em;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    .social-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      animation: slideUp 2s ease-out;
+    }
+
+    .social-icons a, .social-icons span {
+      color: #ffd700;
+      text-decoration: none;
+      font-size: 2em;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #ffffff;
+      transform: scale(1.2);
+    }
+
+    .discord-tag, .gmail-tag {
+      font-size: 1em;
+      margin-top: 0.5em;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2em; }
+      .social-icons a { font-size: 1.5em; }
+    }
+
+    /* 滑鼠拖尾樣式 */
+    .mouse-trail {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #ffd700;
+      pointer-events: none;
+      animation: trail 0.1s ease-out;
+    }
+
+    @keyframes trail {
+      0% { opacity: 1; }
+      100% { opacity: 0; transform: scale(0); }
+    }
+
+    /* 動態星空背景 */
+    .starry-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://cdn.pixabay.com/photo/2015/09/18/19/03/space-943903_960_720.jpg') repeat;
+      z-index: -1;
+      animation: starry 30s linear infinite;
+    }
+
+    @keyframes starry {
+      0% { background-position: 0 0; }
+      100% { background-position: 100% 100%; }
+    }
+  </style>
+
+  <script>
+    // 滑鼠拖尾效果
+    document.addEventListener('mousemove', function(e) {
+      var trail = document.createElement('div');
+      trail.classList.add('mouse-trail');
+      document.body.appendChild(trail);
+      trail.style.left = e.pageX + 'px';
+      trail.style.top = e.pageY + 'px';
+      setTimeout(function() {
+        trail.remove();
+      }, 200);
+    });
+  </script>
+
+  <!-- Font Awesome CDN for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="starry-background"></div>
+
+  <h1>Rich Huang</h1>
+
+  <div class="social-icons">
+    <a href="https://instagram.com/Richhuang0807" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://paypal.me/richhuang" target="_blank" title="PayPal"><i class="fab fa-paypal"></i></a>
+    <a href="https://www.reddit.com/user/DepartmentPlayful524" target="_blank" title="Reddit"><i class="fab fa-reddit"></i></a>
+    <a href="https://open.spotify.com/user/666" target="_blank" title="Spotify"><i class="fab fa-spotify"></i></a>
+    <a href="https://steamcommunity.com/id/richhuang81" target="_blank" title="Steam"><i class="fab fa-steam"></i></a>
+    <a href="https://www.tiktok.com/@rich.huang1" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://x.com/RichHoung87" target="_blank" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://account.xbox.com/zh-HK/Profile?gamertag=Richhuang666" target="_blank" title="Xbox"><i class="fab fa-xbox"></i></a>
+    <a href="https://youtube.com/@Awse666" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://github.com/sawse666" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <span class="discord-tag" title="Discord"><i class="fab fa-discord"></i> rich0807</span>
+    <a href="mailto:richhuang81@gmail.com" class="gmail-tag" title="Email"><i class="fas fa-envelope"></i> richhuang81@gmail.com</a>
+  </div>
+
+  <!-- 背景音樂 -->
+  <audio autoplay loop hidden>
+    <source src="epic.mp3" type="audio/mpeg">
+    您的瀏覽器不支援音樂播放。
+  </audio>
+
+  <!-- 授權資訊 -->
+  <footer style="margin-top: 3em; font-size: 0.8em; color: #888;">
+    Music by <a href="https://www.bensound.com" target="_blank" style="color: #888;">Bensound.com</a><br>
+    License code: 08PZDWJ58GZS9CCJ
+  </footer>
+</body>
+</html>
